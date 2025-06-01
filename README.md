@@ -1,6 +1,6 @@
 # tsh's code
 
-```contest```比赛AC代码
+```contest```比赛/测试代码
 
 ```problem```各大OJ做题代码
 
