@@ -6,9 +6,8 @@ int n,c,d[100005];
 vector<pair<int,int>>e[100005];
 void dfs(int u,int fa)
 {
-	for(auto x:e[u])
+	for(auto[v,w]:e[u])
 	{
-		int v=x.first,w=x.second;
 		if(v==fa)continue;
 		d[v]=d[u]+w;
 		if(d[v]>d[c])c=v;
