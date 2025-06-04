@@ -17,7 +17,7 @@ signed main()
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
-	
+	memset(a,-1,sizeof(a));
 	memset(f,127,sizeof(f));
 	f[1][0][0]=0,f[1][1][0]=1;
 	cin>>n>>m;

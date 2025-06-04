@@ -3,28 +3,54 @@
 #define int long long
 #define endl "\n"
 using namespace std;
-int n,t;
+const int p=233317; 
+const int mod=1000000007;
+int n;
 string s;
-char a[1000006],b[1000006]; 
+int ha1[2000005],ha2[2000005],base[2000005];
+int hash1(int l,int r)
+{
+	return (ha1[r]+mod-ha1[l-1]*base[r-l+1]%mod)%mod;
+}
+int hash2(int l,int r)
+{
+	return (ha2[l]+mod-ha2[r+1]*base[r-l+1]%mod)%mod;
+}
 signed main()
 {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
 	cin>>n>>s;
-	for(int i=0;i<n;i++)
+	s='#'+s;
+	base[0]=1;
+	for(int i=1;i<=2*n;i++)
 	{
-		a[i]=s[i],b[i]=b[i+n]=s[2*n-i-1];
+		base[i]=base[i-1]*p;
+		base[i]%=mod;
 	}
-	int x=strstr(b,a)-b;
-	if(x<0)
+	for(int i=1;i<=2*n;i++)
 	{
-		cout<<-1;
-		return 0;
+		ha1[i]=ha1[i-1]*p+s[i]-48;
+		ha1[i]+=mod,ha1[i]%=mod;
 	}
-	x=n-x;
-	for(int i=0;i<x;i++)cout<<s[i];
-	for(int i=n+x;i<2*n;i++)cout<<s[i];
-	cout<<endl<<x;
+	for(int i=2*n;i>0;i--)
+	{
+		ha2[i]=ha2[i+1]*p+s[i]-48;
+		ha2[i]+=mod,ha2[i]%=mod;
+	}
+	for(int i=0;i<=n;i++)
+	{
+		if((hash1(1,i)*base[n-i]+hash1(i+n+1,n+n))%mod==hash2(i+1,i+n))
+		{
+			for(int j=i+n;j>i;j--)
+			{ 
+				cout<<s[j]; 
+			} 
+			cout<<endl<<i;
+			return 0;
+		}
+	}
+	cout<<-1;
 	return 0;
 }
