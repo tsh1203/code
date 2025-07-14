@@ -33,7 +33,7 @@ signed main()
 		cin>>u>>v;
 		e[u].push_back(v),e[v].push_back(u);
 	}
-	dfs(r,0);
+	dfs(r, 0);
 	for(int i=1;i<=__lg(n);i++)
 	{
 		for(int j=1;j+(1 << i)-1<= n;j++)

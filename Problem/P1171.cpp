@@ -25,7 +25,7 @@ signed main()
 	{
 		for(int j=1;j<=n;j++)
 		{
-			if(i>>(j-1)&1)
+			if(i&(i<<(j-1)))
 			{
 				for(int k=1;k<=n;k++)
 				{
