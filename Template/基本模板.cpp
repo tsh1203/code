@@ -3,10 +3,29 @@
 #define int long long
 #define endl "\n"
 using namespace std;
+namespace FastIO {
+	void read(){}
+	template <class T1,class ... T2> inline void read(T1 &x,T2 &... oth){
+		bool pd=0;x=0;char ch=getchar();
+		while(!isdigit(ch)){pd|=ch=='-';ch=getchar();}
+		while(isdigit(ch)){x=(x<<3)+(x<<1)+(ch^48);ch=getchar();}
+		x=pd?-x:x;
+		read(oth...);
+	}
+	template <class T> void _write(T x){
+		if(x<0){putchar('-');x=-x;}
+		if(x>9) _write(x/10);
+		putchar(x%10^48);
+	}
+	void write(){}
+	template <class T1,class ... T2>
+	inline void write(T1 x,T2 ...oth){_write(x);putchar(' ');write(oth...);}
+}//Orz lby 
+using namespace FastIO;
 signed main()
 {
-	ios::sync_with_stdio(0);
+	ios::sync_with_stdio(false);
 	cin.tie(0);
-	cout.tie(0);
+	cout.tie(0); 
 	return 0;
 }
