@@ -1,7 +1,12 @@
 #include<bits/stdc++.h>
-#pragma GCC optimize("3","Ofast","inline")
 #define int long long
-#define endl "\n"
+#ifdef __linux__
+#define getchar getchar_unlocked
+#define putchar putchar_unlocked
+#else
+#define getchar _getchar_nolock
+#define putchar _putchar_nolock
+#endif
 using namespace std;
 namespace FastIO {
 	void read(){}
@@ -20,12 +25,10 @@ namespace FastIO {
 	void write(){}
 	template <class T1,class ... T2>
 	inline void write(T1 x,T2 ...oth){_write(x);putchar(' ');write(oth...);}
+	inline void endline(){putchar('\n');}
 }//Orz lby 
 using namespace FastIO;
-signed main()
-{
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout.tie(0); 
+signed main(){
+	
 	return 0;
 }
