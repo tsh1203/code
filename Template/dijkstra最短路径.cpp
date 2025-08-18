@@ -11,7 +11,7 @@ int n,m,s,t;
 int x[102],y[102];
 int head[200005],idx;
 int dis[100005],vis[100005],sum,ans[100005];
-priority_queue<pai，vector<pai>,greater<pai>>q;
+priority_queue<pai,vector<pai>,greater<pai>>q;
 void add(int u,int v,int w)
 {
 	e[++idx].v=v;
