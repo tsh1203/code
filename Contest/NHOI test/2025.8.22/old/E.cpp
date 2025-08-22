@@ -3,7 +3,7 @@
 #define endl "\n"
 using namespace std;
 const int N=102;
-int t,n,m;
+int t=1,n,m;
 int dx[10]={0,0,1,-1},dy[10]={1,-1,0,0};
 int a[N][N],b[N][N];
 bool ck(int x,int y){
@@ -36,13 +36,10 @@ void solve(){
 		for(int j=1;j<=m;j++){
 			char c;
 			cin>>c;
-//			if(c=='G'){
-//				a[i][j]=1;
-//				tot++;
-//			}
-			a[i][j]=(c=='G');
-			tot+=a[i][j];
-			
+			if(c=='G'){
+				a[i][j]=1;
+				tot++;
+			}
 		}
 	int sum=0;
 	for(int i=1;i<=n;i++){
@@ -83,4 +80,3 @@ signed main(){
 		solve();
 	return 0;
 }
-
