@@ -3,26 +3,21 @@
 #define endl "\n"
 #define mid ((L+R)>>1)
 using namespace std;
-const int N=1000006,M=1000006;
-struct no
-{
+const int N=1e6+6,M=1e6+6;
+struct no{
 	no *l,*r;
 	int v;
 }tr[M<<5];
-
 no *rt[M];
 int a[N];
 int n,m,cur=-1;
-no *neww()
-{
+no *neww(){
 	++cur;
 	tr[cur].l=tr[cur].r=tr;
 	tr[cur].v=1e9+10;
 	return tr+cur;
 }
-
-no *pushup(no *past,int L,int R,int x,int v)
-{
+no *pushup(no *past,int L,int R,int x,int v){
 	no *node=neww();
 	(*node)=(*past);
 	if(L==R)node->v=v;
@@ -32,16 +27,12 @@ no *pushup(no *past,int L,int R,int x,int v)
 	}
 	return node;
 }
-
-int query(no *node,int L,int R,int x)
-{
+int query(no *node,int L,int R,int x){
 	if(L==R)return node->v;
 	if(x<=mid)return query(node->l,L,mid,x);
 	else return query(node->r,mid+1,R,x);
 }
-
-signed main()
-{
+signed main(){
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	cout.tie(0);
@@ -66,4 +57,3 @@ signed main()
 	}
 	return 0;
 }
-
