@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+//#pragma GCC optimize("3","inline") 
+#define int long long
+#ifdef __linux__
+#define getchar getchar_unlocked
+#define putchar putchar_unlocked
+#else
+#define getchar _getchar_nolock
+#define putchar _putchar_nolock
+#endif
+using namespace std;
+namespace FastIO {
+	void read(){}
+	template <class T1,class ... T2> inline void read(T1 &x,T2 &... oth){
+		bool pd=0;x=0;char ch=getchar();
+		while(!isdigit(ch)){pd|=ch=='-';ch=getchar();}
+		while(isdigit(ch)){x=(x<<3)+(x<<1)+(ch^48);ch=getchar();}
+		x=pd?-x:x;
+		read(oth...);
+	}
+	template <class T> void _write(T x){
+		if(x<0){putchar('-');x=-x;}
+		if(x>9) _write(x/10);
+		putchar(x%10^48);
+	}
+	void write(){}
+	template <class T1,class ... T2>
+	inline void write(T1 x,T2 ...oth){_write(x);putchar(' ');write(oth...);}
+	inline void endline(){putchar('\n');}
+}//Orz lby 
+using namespace FastIO;
+const int N=1e5+5;
+int n,c;
+int f[N],a[N],s[N],q[N],l=1,r;
+signed main(){
+//	freopen(".in","r",stdin); 
+//	freopen(".out","w",stdout);
+	read(n,c);
+	for(int i=1;i<=n;i++)read(a[i]),s[i]=s[i-1]+a[i];
+	for(int i=1;i<c;i++){
+		f[i]=s[i];
+		while(l<=r&&a[q[r]]>=a[i])r--;
+		q[++r]=i;
+	}
+	for(int i=c;i<=n;i++){
+		while(q[l]<=i-c&&l<=r)l++;
+		while(l<=r&&a[q[r]]>=a[i])r--;
+		q[++r]=i;
+		f[i]=min(f[i-c]+s[i]-s[i-c]-a[q[l]],f[i-1]+a[i]);
+	}
+	cout<<f[n];
+	return 0;
+}
